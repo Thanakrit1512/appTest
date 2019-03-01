@@ -1,0 +1,21 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "app.js"
+  },
+  "engines": {
+    "node": "11.6.0"
+  },
+  "author": "lu69x",
+  "license": "CC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongojs": "^2.6.0",
+    "mongoose": "^5.4.16"
+  }
+}
