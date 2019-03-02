@@ -1,7 +1,7 @@
 var mongojs = require('mongojs');
 
-var databaseUrl = 'mongodb://localhost/tgr2019test';
-var collections = ['test'];
+var databaseUrl = 'mongodb://localhost/db';
+var collections = ['logger'];
 
 var connect = mongojs(databaseUrl, collections);
 

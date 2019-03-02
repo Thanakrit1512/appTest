@@ -8,19 +8,29 @@ var app = express();
 
 app.use(bodyParser.json());
 
-app.get('/', function (req, res) {
+app.get('/',  (req, res)=>{
     res.send("Code for RESTful API");
   })
 
-app.get('/get', function (req, res) {
-  db.logger.find(function (err, docs) {
-    console.log(docs)
+app.get('/count', function (req, res) {
+    db.logger.find((eer,docs)=>{
+        res.send(200,docs)
+    }).count((err,docs)=>{
+        console.log(docs);
+    })
+  })
+
+app.get('/get',  (req, res)=>{
+  db.logger.find((err, docs)=>{
+      var d = docs[0]
+    console.log(d)
     res.send(docs)
   })
 })
-app.post('/addUser', (req, res)=>{
+
+app.post('/post', (req, res)=>{
     var json = req.body;
-    db.logger.insert(json, function (err, docs) {
+    db.logger.insert(json,(err, docs)=>{
       console.log(docs);
       res.send(docs);
     })
