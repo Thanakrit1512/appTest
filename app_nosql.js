@@ -11,15 +11,19 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.json());
 
 app.get('/',(req, res)=>{
-  res.send('RestfulAPI for WU LoRa')
+  res.render('index')
 })
 
 app.get('/detail',(req, res)=>{
   db.logger.find((err, docs)=>{
     let ind = Object.keys(docs).length-(1)
-    res.render('index',{DevEUI:docs[ind].Logger.DevEUI_uplink.DevEUI, DevAddr:docs[ind].Logger.DevEUI_uplink.DevAddr,
-                      loggerTime:docs[ind].Logger.DevEUI_uplink.Time, serverTime:docs[ind].Timestamp,
-                      payload_hex:docs[ind].Logger.DevEUI_uplink.payload_hex, LrrRSSI:parseInt(docs[ind].Logger.DevEUI_uplink.LrrRSSI)})
+    if(ind+1 == 0){
+      res.render('noData')
+    }else{
+      res.render('detail',{DevEUI:docs[ind].Logger.DevEUI_uplink.DevEUI, DevAddr:docs[ind].Logger.DevEUI_uplink.DevAddr,
+        loggerTime:docs[ind].Logger.DevEUI_uplink.Time, serverTime:docs[ind].Timestamp,
+        payload_hex:docs[ind].Logger.DevEUI_uplink.payload_hex, LrrRSSI:parseInt(docs[ind].Logger.DevEUI_uplink.LrrRSSI)})
+    }
   })
 })
 
@@ -48,7 +52,7 @@ app.get('/drop/:passwd',(req, res)=>{
 })
 
 app.post('/postLogger',(req, res)=>{
-    var json = {'Logger':req.body,'Timestamp':new Date()};
+    var json = {'Logger':req.body,'Timestamp':new Date().toISOString()};
     db.logger.insert(json,(err, docs)=>{
       console.log(docs);
       res.send(docs);
