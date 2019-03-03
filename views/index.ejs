@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>IoT Server</title>
+    <style media="screen">
+      body{
+        background: indianred;color: #ffffff;padding: 30px;
+      }
+      h1{
+        text-align: center
+      }
+      h2{
+        text-align: center
+      }
+      p{
+        text-align: left
+      }
+      table{
+        padding: 30px
+      }
+    </style>
+  </head>
+  <body>
+    <h1>WU LoRa lighting control</h1>
+    <p>- /get       : View all JSON object</p>
+    <p>- /countObj  : Count object</p>
+    
+    <table>
+      <caption>LoRa Detail</caption>
+      <tr>
+        <td>DevEUI      : </td><td><%=DevEUI%></td>
+      </tr>
+      <tr>
+        <td>DevAddr     : </td><td><%=DevAddr%></td>
+      </tr>
+      <tr>
+        <td>Logger Time : </td><td><%=loggerTime%></td>
+      </tr>
+      <tr>
+        <td>Server Time : </td><td><%=serverTime%></td>
+      </tr>
+      <tr>
+        <td>Payload_HEX : </td><td><%=payload_hex%></td>
+      </tr>
+      <tr>
+        <td>RSSI        : </td><td><%=LrrRSSI%> mW</td>
+      </tr>
+    </table>
+
+  </body>
+</html>
