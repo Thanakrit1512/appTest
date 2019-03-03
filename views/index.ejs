@@ -23,10 +23,13 @@
   </head>
   <body>
     <h1>WU LoRa lighting control</h1>
+    <h1>Current time :<%=serverTime%></h1>
     <p>--------- RestFul API ----------</p>
     <p>- /get       : View all JSON object</p>
     <p>- /countObj  : Count object</p>
-    <p>- /detail    : View lasted data logger</p>
-    <p>--------------------------------</p>
+    <p>--------------------------------</p><br><br>
+    <p>--------- Menu ----------</p>
+    <% include menu.ejs %>
+    <p>--------------------------------</p><br><br>
   </body>
 </html>
